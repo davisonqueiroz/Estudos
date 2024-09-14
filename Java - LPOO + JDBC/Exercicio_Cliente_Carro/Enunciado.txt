@@ -3,3 +3,5 @@
 	-Carro: Placa,Modelo,Ano,Cor(Placa sendo chave primaria);
 	- Relação entre as entidades: Uma pessoa pode ter no minimo 1 e no maximo 1 	carro. Um carro pode ter nenhum ou no maximo 1 dono.
 - Apos a criação, criar aplicação Java que instancie 3 clientes e 3 Carrose grave no JDBC
+
+-Adapte a aplicação desenvolvida para utilizar o padrao DAO.

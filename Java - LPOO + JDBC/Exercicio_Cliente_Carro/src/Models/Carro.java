@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package exercicio_cliente_carro;
+package Models;
 
 
 public class Carro {
@@ -61,6 +61,12 @@ public class Carro {
     public void setCor(String Cor) {
         this.Cor = Cor;
     }
+
+    @Override
+    public String toString() {
+        return "Carro{" + "Placa=" + Placa + ", Modelo=" + Modelo + ", Ano=" + Ano + ", Cor=" + Cor + ", Proprietario=" + Proprietario + '}';
+    }
+    
     
     
 }

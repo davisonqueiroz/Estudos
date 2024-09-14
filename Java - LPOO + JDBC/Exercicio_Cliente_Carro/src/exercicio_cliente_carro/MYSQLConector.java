@@ -8,8 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.sql.ResultSet;
 
-public class ConexaoFactory {
+public class MYSQLConector {
     
     public static Connection getConect(){
         
@@ -54,6 +55,20 @@ public class ConexaoFactory {
             
             if(stm != null){
                 stm.close();
+                
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Falha ao fechar Statement");
+        }
+    }
+    
+    public static void close(Connection conn, Statement stm,ResultSet rs){
+        close(conn,stm);
+        try {
+            
+            if(rs != null){
+                rs.close();
                 
             }
             
