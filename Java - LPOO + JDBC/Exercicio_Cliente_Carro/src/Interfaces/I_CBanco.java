@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Models.Carro;
+
 import java.util.List;
 
 /**
@@ -21,4 +22,6 @@ public interface I_CBanco {
     public List<Carro> buscarPorPlaca(String placa);
 
     public void atualizarRegistro(Carro carro);
+    
+    public int ultimaPessoa();
 }

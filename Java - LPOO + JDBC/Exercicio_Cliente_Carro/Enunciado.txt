@@ -5,3 +5,7 @@
 - Apos a criação, criar aplicação Java que instancie 3 clientes e 3 Carrose grave no JDBC
 
 -Adapte a aplicação desenvolvida para utilizar o padrao DAO.
+
+-Criar uma interface grafica(tela) para o programa. Nesta interface deve ser possivel informar os dados do Carro e da Pessia. A tela devera ter um botao para salvar os dados.
+
+

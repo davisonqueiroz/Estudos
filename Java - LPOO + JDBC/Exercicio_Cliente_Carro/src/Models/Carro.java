@@ -4,6 +4,10 @@
  */
 package Models;
 
+import DAO.CarroDAO;
+import Interfaces.I_CBanco;
+
+
 
 public class Carro {
     
@@ -13,13 +17,30 @@ public class Carro {
     public String Cor;
     public int Proprietario;
 
-    public Carro(String Placa, String Modelo, int Ano, String Cor, int Proprietario) {
+
+    public Carro(String Placa, String Modelo, int Ano, String Cor) {
+        
+        I_CBanco carro =new CarroDAO();
+        int prop;
         this.Placa = Placa;
         this.Modelo = Modelo;
         this.Ano = Ano;
         this.Cor = Cor;
-        this.Proprietario = Proprietario;
+        
     }
+
+    public Carro(String Placa, String Modelo, int Ano, String Cor, int prop) {
+        
+        I_CBanco carro =new CarroDAO();
+        
+        this.Placa = Placa;
+        this.Modelo = Modelo;
+        this.Ano = Ano;
+        this.Cor = Cor;
+        this.Proprietario = carro.ultimaPessoa();
+    }
+    
+    
 
     
     public int getProprietario() {
@@ -28,6 +49,13 @@ public class Carro {
 
     public void setProprietario(int Proprietario) {
         this.Proprietario = Proprietario;
+    }
+    
+    public void setPropAuto() {
+        
+        I_CBanco carro =new CarroDAO();
+        this.Proprietario = carro.ultimaPessoa();
+        
     }
     
     public String getPlaca() {

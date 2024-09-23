@@ -28,14 +28,10 @@ public class Exercicio_Cliente_Carro {
         Carro c2 = new Carro ("IRH-85B8", "Fusca", 1998, "Amarelo" , 3 );
         CarroDAO.salvar(c2);
         */
-        
-        I_CBanco c = new CarroDAO();
-        System.out.println(c.listar());
-        System.out.println(c.buscarPorPlaca("AWE-32W2"));
-        
-        I_PBanco p = new PessoaDAO();
-        System.out.println(p.listar());
-        System.out.println(p.buscarPorNome("Roberto"));
+        Carro c = new Carro("RWE-23C1", "Fiat Uno", 2008, "Vinho");
+        I_CBanco carro = new CarroDAO();
+        carro.salvar(c);
+       
 
     }
     

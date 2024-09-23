@@ -2,6 +2,7 @@ package DAO;
 
 import Interfaces.I_CBanco;
 import Models.Carro;
+import Models.Pessoa;
 import exercicio_cliente_carro.MYSQLConector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,12 +13,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarroDAO implements I_CBanco {
+    
+    @Override
+    public int ultimaPessoa() {
+        
+        String comando = "select * from pessoa";
+        Connection conn = MYSQLConector.getConect();
+        
+        try {
+            
+            //TYPE_SROLL_INSENSITIVE permite fazer consultas em diferentes "sentidos", permitindo posicionar o cursor no final, em uma posicao
+            //especifica da tabela ou fazer consultas de baixo para cima. Ja CONCUR dita se tal consulta sera apenas para leitura ou 
+            //permitirá updates.
+            Statement pstm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = pstm.executeQuery(comando);
+            int id =0;
+            if(rs.last()){
+                
+                return id = rs.getInt("Id");
+            }
+            
+            MYSQLConector.close(conn,pstm,rs);
+            
+           
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+            
+        }
+        return 0;
+        
+    }
 
     public void salvar(Carro carro) {
 
         //comando o qual sera usado para salvar os dados diretamente no banco de dados
         String com = "insert into carro(Placa,Modelo,Ano,Cor,Proprietario) values (?, ?, ?, ?, ?)";
-
+        I_CBanco c = new CarroDAO();
         Connection conn = MYSQLConector.getConect();
 
         try {
@@ -27,7 +60,7 @@ public class CarroDAO implements I_CBanco {
             pstm.setString(2, carro.getModelo());
             pstm.setInt(3, carro.getAno());
             pstm.setString(4, carro.getCor());
-            pstm.setInt(0, carro.getProprietario());
+            pstm.setInt(5, c.ultimaPessoa());
             pstm.executeUpdate();
 
             MYSQLConector.close(conn, pstm);
@@ -142,6 +175,8 @@ public class CarroDAO implements I_CBanco {
             e.printStackTrace();
         }
     }
+
+    
 }
 
 
